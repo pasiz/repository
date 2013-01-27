@@ -15,7 +15,7 @@ for i in $PLUGINS
 do
 	directory=$(basename $i)
 	echo "checking datadirs..."
-	if [ -f $REPOSITORY/$directory ]
+	if [ -d $REPOSITORY/$directory ]
 	then
 		echo "datadir $REPOSITORY/$directory exists"
 	else
