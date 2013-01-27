@@ -28,7 +28,8 @@ do
 		echo "file exists"
 	else
 		echo "file does not exist"
-		zip -rq $REPOFILE $directory -x *.git* @.gitignore #> /dev/null
+		echo "zip -r $REPOFILE $directory -x *.git* @.gitignore #> /dev/null"
+		zip -rq $REPOFILE $directory -x *.git* *.pyc #> /dev/null
 	fi
 	cat $i/addon.xml | grep -v "<?xml" >> ./addons.xml
 done
