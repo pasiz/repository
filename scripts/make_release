@@ -1,0 +1,40 @@
+#!/bin/bash
+
+REPOSITORY=./data
+
+PLUGINS=$(echo ../plugin.video.* repository.*)
+
+THISDIR=$(pwd)
+
+echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' > ./addons.xml
+echo "<addons>" >> ./addons.xml
+cat ./repository.fiplugins/addon.xml | grep -v "<?xml" >> ./addons.xml
+echo "making release zip files..."
+
+for i in $PLUGINS
+do
+	directory=$(basename $i)
+	echo "checking datadirs..."
+	if [ -f $REPOSITORY/$directory ]
+	then
+		echo "datadir $REPOSITORY/$directory exists"
+	else
+		echo "datadir $REPOSITORY/$directory doesn't exist, creating"
+		mkdir $REPOSITORY/$directory
+	fi
+	echo "check if version of plugin $i exists on repo"
+	VERSION=$(xpath -q -e "/addon/attribute::version" $i/addon.xml | awk -F\" '{ print $2 }')
+	REPOFILE=$REPOSITORY/$directory/$directory-$VERSION.zip
+	if [ -f $REPOFILE ]
+	then
+		echo "file exists"
+	else
+		echo "file does not exist"
+		zip -r $REPOFILE $i -x */.git/* @.gitignore #> /dev/null
+	fi
+	cat $i/addon.xml | grep -v "<?xml" >> ./addons.xml
+done
+echo "</addons>" >> ./addons.xml
+md5sum addons.xml > addons.xml.md5
+
+#zip -r $REPOSITORY/repository.finnish-tv/repository.finnish-tv-1.0.0.zip repository.finnish.tv

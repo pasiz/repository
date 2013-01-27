@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="repository.fiplugins" name="Finnish Plugins for XBMC" version="1.0" provider-name="pasiz">
+	<extension point="xbmc.addon.repository" name="Finnish plugins">
+		<info compressed="false">https://github.com/pasiz/repository/raw/master/addons.xml</info>
+		<checksum>https://github.com/pasiz/repository/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/pasiz/repository/raw/master/data/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Finnish plugins for XBMC</summary>
+		<platform>all</platform>
+	</extension>
+</addon>
+<addon id="plugin.video.katsomo" name="katsomo" version="0.5" provider-name="pasiz">
+  <requires>
+    <import addon="xbmc.python" version="2.0"/>
+    <import addon="script.module.xbmcswift2" version="1.1.1"/>
+    <import addon="script.module.parsedom" version="0.9.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language>fi</language>
+    <summary>Katsomo plugin</summary>
+    <description>Plugin for viewing content in www.katsomo.fi (finnish tv channels MTV3, Sub, AVA)</description>
+  </extension>
+</addon>
+<addon id="repository.fiplugins" name="Finnish Plugins for XBMC" version="1.0" provider-name="pasiz">
+	<extension point="xbmc.addon.repository" name="Finnish plugins">
+		<info compressed="false">https://github.com/pasiz/repository/raw/master/addons.xml</info>
+		<checksum>https://github.com/pasiz/repository/raw/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://github.com/pasiz/repository/raw/master/data/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Finnish plugins for XBMC</summary>
+		<platform>all</platform>
+	</extension>
+</addon>
+</addons>
