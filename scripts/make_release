@@ -4,8 +4,6 @@ REPOSITORY=./data
 
 PLUGINS=$(echo ../plugin.video.* repository.*)
 
-THISDIR=$(pwd)
-
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' > ./addons.xml
 echo "<addons>" >> ./addons.xml
 cat ./repository.fiplugins/addon.xml | grep -v "<?xml" >> ./addons.xml
@@ -36,5 +34,3 @@ do
 done
 echo "</addons>" >> ./addons.xml
 md5sum addons.xml > addons.xml.md5
-
-#zip -r $REPOSITORY/repository.finnish-tv/repository.finnish-tv-1.0.0.zip repository.finnish.tv
