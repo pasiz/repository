@@ -6,7 +6,7 @@ PLUGINS=$(echo ../plugin.video.* repository.*)
 
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' > ./addons.xml
 echo "<addons>" >> ./addons.xml
-cat ./repository.fiplugins/addon.xml | grep -v "<?xml" >> ./addons.xml
+#cat ./repository.fiplugins/addon.xml | grep -v "<?xml" >> ./addons.xml
 echo "making release zip files..."
 
 for i in $PLUGINS

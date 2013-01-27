@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="repository.fiplugins" name="Finnish Plugins for XBMC" version="1.0" provider-name="pasiz">
-	<extension point="xbmc.addon.repository" name="Finnish plugins">
-		<info compressed="false">https://github.com/pasiz/repository/raw/master/addons.xml</info>
-		<checksum>https://github.com/pasiz/repository/raw/master/addons.xml.md5</checksum>
-		<datadir zip="true">https://github.com/pasiz/repository/raw/master/data/</datadir>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Finnish plugins for XBMC</summary>
-		<platform>all</platform>
-	</extension>
-</addon>
 <addon id="plugin.video.katsomo" name="katsomo" version="0.6" provider-name="pasiz">
   <requires>
     <import addon="xbmc.python" version="2.0"/>
