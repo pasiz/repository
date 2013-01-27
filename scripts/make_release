@@ -1,8 +1,8 @@
 #!/bin/bash
 
-REPOSITORY=./data
+REPOSITORY=data
 
-PLUGINS=$(echo ../plugin.video.* repository.*)
+PLUGINS=$(echo plugin.video.* repository.*)
 
 echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' > ./addons.xml
 echo "<addons>" >> ./addons.xml
@@ -20,7 +20,7 @@ do
 		echo "datadir $REPOSITORY/$directory doesn't exist, creating"
 		mkdir $REPOSITORY/$directory
 	fi
-	echo "check if version of plugin $i exists on repo"
+	echo "check if version of plugin $directory exists on repo"
 	VERSION=$(xpath -q -e "/addon/attribute::version" $i/addon.xml | awk -F\" '{ print $2 }')
 	REPOFILE=$REPOSITORY/$directory/$directory-$VERSION.zip
 	if [ -f $REPOFILE ]
@@ -28,7 +28,7 @@ do
 		echo "file exists"
 	else
 		echo "file does not exist"
-		zip -r $REPOFILE $i -x */.git/* @.gitignore #> /dev/null
+		zip -rq $REPOFILE $directory -x *.git* @.gitignore #> /dev/null
 	fi
 	cat $i/addon.xml | grep -v "<?xml" >> ./addons.xml
 done
