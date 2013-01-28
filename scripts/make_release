@@ -1,5 +1,14 @@
 #!/bin/bash
 
+INIT=$(echo ../plugin.video.*)
+
+for x in $INIT
+do
+	echo "creating link for $x"
+	ln -s $x 
+done
+
+
 REPOSITORY=data
 
 PLUGINS=$(echo plugin.video.* repository.*)
@@ -28,10 +37,16 @@ do
 		echo "file exists"
 	else
 		echo "file does not exist"
-		echo "zip -r $REPOFILE $directory -x *.git* @.gitignore #> /dev/null"
-		zip -rq $REPOFILE $directory -x *.git* *.pyc #> /dev/null
+		zip -rq $REPOFILE $directory -x *.git* @.gitignore
 	fi
 	cat $i/addon.xml | grep -v "<?xml" >> ./addons.xml
 done
 echo "</addons>" >> ./addons.xml
 md5sum addons.xml > addons.xml.md5
+
+PLUGINS=$(echo plugin.video.*)
+for i in $PLUGINS
+do
+	echo "removing link for $i"
+	rm $i
+done
